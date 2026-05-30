@@ -17,7 +17,7 @@ object FavoritesRepository {
     // Твой базовый URL сервера (как в Postman)
     private const val BASE_URL = "http://192.168.0.101:8080"
 
-    // 1. Запрос GET: получить список ID избранного для юзера
+    // Запрос GET: получить список ID избранного для юзера
     suspend fun getFavorites(client: HttpClient, userId: Int): List<Int> {
         return try {
             client.get("$BASE_URL/favorites/$userId").body()
@@ -26,7 +26,7 @@ object FavoritesRepository {
         }
     }
 
-    // 2. Запрос POST: добавить в избранное
+    //Запрос POST: добавить в избранное
     suspend fun addFavorite(client: HttpClient, userId: Int, coffeeId: Int): Boolean {
         return try {
             val response = client.post("$BASE_URL/favorites") {
@@ -39,7 +39,7 @@ object FavoritesRepository {
         }
     }
 
-    // 3. Запрос DELETE: удалить из избранного
+    //Запрос DELETE: удалить из избранного
     suspend fun removeFavorite(client: HttpClient, userId: Int, coffeeId: Int): Boolean {
         return try {
             val response = client.delete("$BASE_URL/favorites") {

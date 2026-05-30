@@ -21,8 +21,7 @@ import com.example.coffeeapp.data.OrderItem
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OrderHistoryScreen(navController: NavController) {
-    // ☕ НАША ЗАТЫЧКА (MOCK-ДАННЫЕ)
-    // Когда перепишем сервер, просто заменим этот список на запрос в бд!
+    // Когда перепишем сервер, просто заменим этот список на запрос в бд
     val fakeOrders = listOf(
         OrderItem(
             "№2048",

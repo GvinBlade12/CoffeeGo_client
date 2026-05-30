@@ -41,7 +41,7 @@ object SessionManager {
         return getPreferences(context).getString(KEY_THEME, "coffee") ?: "coffee"
     }
 
-    // 🔥 НОВЫЕ МЕТОДЫ ДЛЯ СОХРАНЕНИЯ ПРОФИЛЯ
+    // НОВЫЕ МЕТОДЫ ДЛЯ СОХРАНЕНИЯ ПРОФИЛЯ
     fun saveNickname(context: Context, nickname: String) {
         getPreferences(context).edit().putString(KEY_USER_NICKNAME, nickname).apply()
     }

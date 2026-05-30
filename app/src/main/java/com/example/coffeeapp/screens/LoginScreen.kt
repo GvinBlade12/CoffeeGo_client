@@ -168,7 +168,6 @@ fun LoginScreen(navController: NavController) {
                                 errorMessage = "Ошибка сети: ${e.localizedMessage}"
                             }
 
-                            // ОТСЮДА СТРОЧКИ УБРАЛИ, чтобы они не срабатывали при ошибках!
                         }
                     },
                     shape = RoundedCornerShape(24.dp),

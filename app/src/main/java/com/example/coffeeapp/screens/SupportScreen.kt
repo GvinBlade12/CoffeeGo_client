@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-// Моделька для ЧаВо (FAQ)
 data class FaqItem(val question: String, val answer: String)
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -159,7 +158,7 @@ fun FaqRow(faqItem: FaqItem) {
                 )
             }
 
-            // Compose магия: красивая плавная анимация появления текста
+            // красивая плавная анимация появления текста
             AnimatedVisibility(visible = isExpanded) {
                 Column {
                     Spacer(modifier = Modifier.height(8.dp))

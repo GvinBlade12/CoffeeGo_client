@@ -182,9 +182,9 @@ sealed class BottomNavItem(val route: String, val title: String, val icon: Image
 @Composable
 fun CoffeeCard(
     coffee: CoffeeModel,
-    client: HttpClient,          // 📥 Передаем клиент
-    currentUserId: Int,         // 📥 Передаем ID юзера
-    isFavoriteInitial: Boolean,  // 📥 Было ли в избранном
+    client: HttpClient,          //Передаем клиент
+    currentUserId: Int,         //Передаем ID юзера
+    isFavoriteInitial: Boolean,  //Было ли в избранном
     onCardClick: (Int) -> Unit
 ) {
     // Локальное состояние: закрашено сердечко прямо сейчас на экране или нет
