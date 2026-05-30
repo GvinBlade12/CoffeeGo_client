@@ -1,6 +1,4 @@
-package com.example.coffeeapp
-
-import androidx.compose.ui.graphics.vector.ImageVector
+package com.example.coffeeapp.managers
 
 enum class PaymentType {
     CASH, CARD, SBP

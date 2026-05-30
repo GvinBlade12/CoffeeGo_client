@@ -71,10 +71,22 @@ import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.Serializable
-import androidx.compose.ui.graphics.toArgb
 import com.example.coffeeapp.ui.theme.currentAppTheme
 import kotlinx.coroutines.launch
 import com.example.coffeeapp.data.FavoritesRepository
+import com.example.coffeeapp.managers.CartManager
+import com.example.coffeeapp.managers.SessionManager
+import com.example.coffeeapp.screens.CartScreen
+import com.example.coffeeapp.screens.CoffeeDetailScreen
+import com.example.coffeeapp.screens.FavoritesScreen
+import com.example.coffeeapp.screens.LoginScreen
+import com.example.coffeeapp.screens.MapScreen
+import com.example.coffeeapp.screens.OrderHistoryScreen
+import com.example.coffeeapp.screens.PaymentMethodsScreen
+import com.example.coffeeapp.screens.ProfileScreen
+import com.example.coffeeapp.screens.RegListScreen
+import com.example.coffeeapp.screens.SupportScreen
+
 @Serializable
 data class CoffeeModel(
     val id: Int,
@@ -127,7 +139,7 @@ class MainActivity : ComponentActivity() {
                         OrderHistoryScreen(navController = globalNavController)
                     }
                     composable("payment_methods"){
-                        PaymentMethodsScreen(navController =  globalNavController)
+                        PaymentMethodsScreen(navController = globalNavController)
                     }
                     composable("support") {
                         SupportScreen(navController = globalNavController)
@@ -138,7 +150,10 @@ class MainActivity : ComponentActivity() {
                     composable(route = "coffee_detail/{coffeeId}") { backStackEntry ->
                         val coffeeId = backStackEntry.arguments?.getString("coffeeId")?.toIntOrNull()
                         if (coffeeId != null) {
-                            CoffeeDetailScreen(coffeeId = coffeeId, navController = globalNavController)
+                            CoffeeDetailScreen(
+                                coffeeId = coffeeId,
+                                navController = globalNavController
+                            )
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-package com.example.coffeeapp
+package com.example.coffeeapp.screens
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -21,6 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.foundation.text.KeyboardOptions
+import com.example.coffeeapp.managers.PaymentMethod
+import com.example.coffeeapp.managers.PaymentType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

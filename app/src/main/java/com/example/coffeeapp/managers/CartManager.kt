@@ -1,6 +1,7 @@
-package com.example.coffeeapp
+package com.example.coffeeapp.managers
 
 import androidx.compose.runtime.mutableStateListOf
+import com.example.coffeeapp.CoffeeModel
 
 // Моделька для элемента в корзине (сам кофе + выбранный размер + количество)
 data class CartItem(

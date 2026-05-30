@@ -1,5 +1,6 @@
-package com.example.coffeeapp
+package com.example.coffeeapp.screens
 
+import android.view.ViewGroup
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -53,7 +54,7 @@ fun MapScreen() {
             factory = { _ ->
                 // Если карту переключали, у нее мог остаться старый стандартный ViewGroup-родитель.
                 // Безопасно удаляем ее из него стандартными средствами Android SDK:
-                (mapView.parent as? android.view.ViewGroup)?.removeView(mapView)
+                (mapView.parent as? ViewGroup)?.removeView(mapView)
 
                 mapView // Возвращаем саму карту
             }

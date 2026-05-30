@@ -1,4 +1,4 @@
-package com.example.coffeeapp
+package com.example.coffeeapp.data
 
 // Простая моделька заказа
 data class OrderItem(

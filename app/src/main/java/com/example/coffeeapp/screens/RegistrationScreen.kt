@@ -1,4 +1,4 @@
-package com.example.coffeeapp
+package com.example.coffeeapp.screens
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
@@ -14,12 +14,15 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.coffeeapp.managers.SessionManager
+import com.example.coffeeapp.client
 import com.example.coffeeapp.ui.theme.CoffeeAppTheme
 import io.ktor.client.call.body
 import io.ktor.client.request.*
@@ -45,7 +48,7 @@ fun RegListScreen(navController: NavController) {
     var errorMessage by remember { mutableStateOf<String?>(null) }
 
     val coroutineScope = rememberCoroutineScope()
-    val context = androidx.compose.ui.platform.LocalContext.current
+    val context = LocalContext.current
 
     Scaffold(
         containerColor = Color(0xFFF3E5AB),

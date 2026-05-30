@@ -1,4 +1,4 @@
-package com.example.coffeeapp // твой пакет
+package com.example.coffeeapp.screens // твой пакет
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.coffeeapp.managers.SessionManager
 import com.example.coffeeapp.data.FavoritesRepository
 import io.ktor.client.*
 import kotlinx.coroutines.launch

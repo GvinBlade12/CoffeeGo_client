@@ -1,4 +1,4 @@
-package com.example.coffeeapp
+package com.example.coffeeapp.managers
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -1,4 +1,4 @@
-package com.example.coffeeapp
+package com.example.coffeeapp.screens
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -22,11 +22,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.example.coffeeapp.managers.SessionManager
 import com.example.coffeeapp.ui.theme.currentAppTheme
 import java.text.SimpleDateFormat
 import java.util.*
@@ -47,7 +49,7 @@ fun calculateAge(birthDateMillis: Long): Int {
 @Composable
 fun ProfileScreen(navController: NavController) {
 
-    val context = androidx.compose.ui.platform.LocalContext.current
+    val context = LocalContext.current
 
     // 📥 ЗАГРУЖАЕМ ДАННЫЕ ИЗ ПАМЯТИ ПРИ СТАРТЕ ЭКРАНА
     // Никнейм теперь будет подтягиваться автоматически (тот, что ввели при регистрации)

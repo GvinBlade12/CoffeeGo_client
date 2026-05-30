@@ -1,4 +1,4 @@
-package com.example.coffeeapp
+package com.example.coffeeapp.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,6 +19,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.example.coffeeapp.managers.CartManager
+import com.example.coffeeapp.CoffeeModel
+import com.example.coffeeapp.client
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 
@@ -32,7 +35,7 @@ fun CoffeeDetailScreen(coffeeId: Int, navController: NavController) {
     LaunchedEffect(coffeeId) {
         try {
             // Поменяли IP на твой реальный, чтобы работало и на физическом смартфоне
-            val response: List<CoffeeModel> = client.get("http://192.168.0.102:8080/coffees").body()
+            val response: List<CoffeeModel> = client.get("http://192.168.0.101:8080/coffees").body()
             coffee = response.find { it.id == coffeeId }
             isLoading = false
         } catch (e: Exception) {

@@ -1,4 +1,4 @@
-package com.example.coffeeapp
+package com.example.coffeeapp.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -12,17 +12,20 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.coffeeapp.managers.SessionManager
+import com.example.coffeeapp.client
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import kotlinx.coroutines.launch
+import kotlinx.serialization.Serializable
 
 // Моделька пользователя, которую нам возвращает бэкенд при GET /users
-@kotlinx.serialization.Serializable
+@Serializable
 data class UserResponse(
     val id: Int,
     val name: String,
@@ -40,7 +43,7 @@ fun LoginScreen(navController: NavController) {
 
     val coroutineScope = rememberCoroutineScope()
 
-    val context = androidx.compose.ui.platform.LocalContext.current
+    val context = LocalContext.current
 
     Scaffold(
         containerColor = Color(0xFFF3E5AB), // Твой фирменный кофейный цвет

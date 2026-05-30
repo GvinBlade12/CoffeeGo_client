@@ -1,4 +1,4 @@
-package com.example.coffeeapp
+package com.example.coffeeapp.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.coffeeapp.data.OrderItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -23,9 +24,21 @@ fun OrderHistoryScreen(navController: NavController) {
     // ☕ НАША ЗАТЫЧКА (MOCK-ДАННЫЕ)
     // Когда перепишем сервер, просто заменим этот список на запрос в бд!
     val fakeOrders = listOf(
-        OrderItem("№2048", "Сегодня, 14:20", "Латте Макиато (Бон) x1, Синнабон x1", 420, "Готовится"),
+        OrderItem(
+            "№2048",
+            "Сегодня, 14:20",
+            "Латте Макиато (Бон) x1, Синнабон x1",
+            420,
+            "Готовится"
+        ),
         OrderItem("№1984", "Вчера, 18:05", "Капучино (Стандарт) x2", 360, "Завершен"),
-        OrderItem("№1512", "24 мая, 11:15", "Эспрессо x1, Круассан с шоколадом x1", 290, "Завершен"),
+        OrderItem(
+            "№1512",
+            "24 мая, 11:15",
+            "Эспрессо x1, Круассан с шоколадом x1",
+            290,
+            "Завершен"
+        ),
         OrderItem("№1204", "18 мая, 09:30", "Американо x1", 150, "Отменён")
     )
 
