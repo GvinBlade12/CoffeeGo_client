@@ -160,7 +160,18 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+    override fun onStart() {
+        super.onStart()
+        //Запускаем движок Яндекс.Карт при старте активити
+        MapKitFactory.getInstance().onStart()
+    }
+    override fun onStop() {
+        //Останавливаем движок, когда приложение уходит в фон
+        MapKitFactory.getInstance().onStop()
+        super.onStop()
+    }
 }
+
 
 sealed class BottomNavItem(val route: String, val title: String, val icon: ImageVector) {
     object CatalogList : BottomNavItem("catalog_list", "Каталог", Icons.Default.List)
@@ -224,7 +235,7 @@ fun CoffeeCard(
                         // Если в избранном — показываем залитое сердечко, иначе контурное
                         imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                         contentDescription = "В избранное",
-                        // Делаем сердечко сочно-красным, если оно выбрано
+                        // Делаем сердечко красным если оно выбрано
                         tint = if (isFavorite) Color(0xFFE57373) else Color.White
                     )
                 }
@@ -299,7 +310,7 @@ fun CoffeeListScreen(navController: NavController) {
     val currentUserId = remember { SessionManager.getUserId(context) }
 
     var coffeeList by remember { mutableStateOf<List<CoffeeModel>>(emptyList()) }
-    // Сюда будем сохранять список ID, которые пользователь лайкнул (например: [1, 3])
+    // Сюда сохранять список ID, которые пользователь лайкнул
     var favoriteIds by remember { mutableStateOf<List<Int>>(emptyList()) }
 
     var isLoading by remember { mutableStateOf(true) }
@@ -307,11 +318,11 @@ fun CoffeeListScreen(navController: NavController) {
 
     LaunchedEffect(Unit) {
         try {
-            // 1. Загружаем весь кофе паралельно
+            //Загружаем весь кофе паралельно
             val coffeesResponse: List<CoffeeModel> = client.get("http://192.168.0.101:8080/coffees").body()
             coffeeList = coffeesResponse
 
-            // 2. Загружаем лайки этого пользователя с сервера
+            //Загружаем лайки этого пользователя с сервера
             val favoritesResponse = FavoritesRepository.getFavorites(client, currentUserId)
             favoriteIds = favoritesResponse
 
@@ -375,7 +386,7 @@ fun CoffeeListScreen(navController: NavController) {
                     contentPadding = PaddingValues(bottom = 16.dp)
                 ) {
                     items(coffeeList) { coffee ->
-                        // Проверяем, содержит ли наш список избранного ID этого кофе
+                        // Проверяем, содержит ли список избранного ID этого кофе
                         val isFavorite = favoriteIds.contains(coffee.id)
 
                         CoffeeCard(

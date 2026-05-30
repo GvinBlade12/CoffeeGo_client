@@ -19,12 +19,12 @@ import com.yandex.mapkit.mapview.MapView
 fun MapScreen() {
     val context = LocalContext.current
 
-    // 1. Создаем и настраиваем карту один раз
+    //Создаем и настраиваем карту один раз
     val mapView = remember {
         MapView(context).apply {
             map.move(
                 CameraPosition(
-                    Point(55.751244, 37.618423), // Центр Москвы (или твой город)
+                    Point(55.751244, 37.618423), // Центр Москвы
                     14.0f,
                     0.0f,
                     0.0f
@@ -37,7 +37,7 @@ fun MapScreen() {
         }
     }
 
-    // 2. Управляем стартами и остановками движка Яндекса синхронно с экраном
+    //Управляем стартами и остановками движка Яндекса синхронно с экраном
     DisposableEffect(key1 = mapView) {
         mapView.onStart()
         onDispose {
