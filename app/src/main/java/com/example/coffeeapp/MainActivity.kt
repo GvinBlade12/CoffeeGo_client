@@ -319,7 +319,7 @@ fun CoffeeListScreen(navController: NavController) {
     LaunchedEffect(Unit) {
         try {
             //Загружаем весь кофе паралельно
-            val coffeesResponse: List<CoffeeModel> = client.get("http://192.168.0.101:8080/coffees").body()
+            val coffeesResponse: List<CoffeeModel> = client.get("http://192.168.0.105:8080/coffees").body()
             coffeeList = coffeesResponse
 
             //Загружаем лайки этого пользователя с сервера

@@ -15,7 +15,7 @@ data class FavoriteRequest(
 
 object FavoritesRepository {
     // Твой базовый URL сервера (как в Postman)
-    private const val BASE_URL = "http://192.168.0.101:8080"
+    private const val BASE_URL = "http://192.168.0.105:8080"
 
     // Запрос GET: получить список ID избранного для юзера
     suspend fun getFavorites(client: HttpClient, userId: Int): List<Int> {

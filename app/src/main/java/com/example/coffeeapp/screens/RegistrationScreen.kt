@@ -191,7 +191,7 @@ fun RegListScreen(navController: NavController) {
                         coroutineScope.launch {
                             try {
                                 // 1. Получаем HttpResponse вместо String, чтобы прочитать статус ответа
-                                val response: HttpResponse = client.post("http://192.168.0.101:8080/users") {
+                                val response: HttpResponse = client.post("http://192.168.0.105:8080/users") {
                                     contentType(ContentType.Application.Json)
                                     setBody(CreateUserRequest(
                                         name = nameText,

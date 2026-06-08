@@ -143,7 +143,7 @@ fun LoginScreen(navController: NavController) {
                         coroutineScope.launch {
                             try {
                                 // Запрашиваем всех пользователей с сервера
-                                val users: List<UserResponse> = client.get("http://192.168.0.101:8080/users").body()
+                                val users: List<UserResponse> = client.get("http://192.168.0.105:8080/users").body()
 
                                 // Ищем юзера с совпадающими email и password
                                 val matchedUser = users.find { it.email == emailText && it.password == passwordText }
