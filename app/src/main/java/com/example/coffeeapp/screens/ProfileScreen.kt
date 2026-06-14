@@ -51,14 +51,11 @@ fun ProfileScreen(navController: NavController) {
 
     val context = LocalContext.current
 
-    // 📥 ЗАГРУЖАЕМ ДАННЫЕ ИЗ ПАМЯТИ ПРИ СТАРТЕ ЭКРАНА
+    // ЗАГРУЖАЕМ ДАННЫЕ ИЗ ПАМЯТИ ПРИ СТАРТЕ ЭКРАНА
     // Никнейм теперь будет подтягиваться автоматически (тот, что ввели при регистрации)
     var nickname by remember { mutableStateOf(SessionManager.getNickname(context)) }
-
-    // Загружаем сохраненные миллисекунды даты рождения
     val savedMillis = remember { SessionManager.getBirthdayMillis(context) }
 
-    // Инициализируем переменные в зависимости от того, были ли данные сохранены ранее
     var birthday by remember {
         mutableStateOf(
             if (savedMillis != 0L) {
@@ -86,11 +83,8 @@ fun ProfileScreen(navController: NavController) {
     var showEditNicknameDialog by remember { mutableStateOf(false) }
     var newNicknameInput by remember { mutableStateOf(nickname) }
 
-    // 🌐 ФУНКЦИЯ-ЗАГОТОВКА ДЛЯ СЕРВЕРА
-    // Когда допишешь сервер Ktor, внутри этой функции будет реальный сетевой запрос
     fun updateNicknameOnServer(newNick: String, onResult: (Boolean) -> Unit) {
         // Имитируем, что сервер ответил "Успешно"
-        // (Позже здесь будет: client.post("...") и проверка статуса ответа)
         onResult(true)
     }
 
@@ -316,7 +310,7 @@ fun ProfileScreen(navController: NavController) {
         }
     }
 
-    // --- ОБНОВЛЕННЫЙ ДИАЛОГ ИЗМЕНЕНИЯ ИМЕНИ ---
+    // ОБНОВЛЕННЫЙ ДИАЛОГ ИЗМЕНЕНИЯ ИМЕНИ
     if (showEditNicknameDialog) {
         AlertDialog(
             onDismissRequest = { showEditNicknameDialog = false },
@@ -337,13 +331,13 @@ fun ProfileScreen(navController: NavController) {
                 TextButton(onClick = {
                     if (newNicknameInput.isNotBlank()) {
 
-                        // 1. Сначала стучимся на сервер
+                        // Сначала стучимся на сервер
                         updateNicknameOnServer(newNicknameInput) { isSuccess ->
                             if (isSuccess) {
-                                // 2. Если сервер ответил успешно — сохраняем локально в телефон
+                                // Если сервер ответил успешно сохраняем локально в телефон
                                 SessionManager.saveNickname(context, newNicknameInput)
 
-                                // 3. Обновляем переменную состояния, чтобы экран тут же перерисовал новое имя
+                                // Обновляем переменную состояния, чтобы экран тут же перерисовал новое имя
                                 nickname = newNicknameInput
 
                                 showEditNicknameDialog = false

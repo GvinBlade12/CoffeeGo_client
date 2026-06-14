@@ -1,4 +1,4 @@
-package com.example.coffeeapp.data // подправь пакет под свой проект
+package com.example.coffeeapp.data
 
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -6,7 +6,6 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import kotlinx.serialization.Serializable
 
-// Моделька запроса (1-в-1 как на сервере, чтобы Ktor мог сериализовать её в JSON)
 @Serializable
 data class FavoriteRequest(
     val userId: Int,
@@ -14,7 +13,6 @@ data class FavoriteRequest(
 )
 
 object FavoritesRepository {
-    // Твой базовый URL сервера (как в Postman)
     private const val BASE_URL = "http://192.168.0.105:8080"
 
     // Запрос GET: получить список ID избранного для юзера
@@ -22,7 +20,7 @@ object FavoritesRepository {
         return try {
             client.get("$BASE_URL/favorites/$userId").body()
         } catch (e: Exception) {
-            emptyList() // Если нет интернета или сервер упал — возвращаем пустой список
+            emptyList() // Если нет интернета или сервер упал возвращаем пустой список
         }
     }
 

@@ -8,7 +8,7 @@ data class CartItem(
     val coffee: CoffeeModel,
     val size: String,
     var quantity: Int = 1,
-    val price: Int = 450 // Пока захардкодим цену, потом можно вынести в бэкенд
+    val price: Int = 450
 )
 
 object CartManager {
@@ -22,7 +22,6 @@ object CartManager {
 
         if (existingItem != null) {
             existingItem.quantity++
-            // Небольшой хак для Compose, чтобы он увидел изменение внутри объекта
             val index = cartItems.indexOf(existingItem)
             cartItems[index] = existingItem.copy()
         } else {

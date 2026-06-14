@@ -21,7 +21,7 @@ import com.example.coffeeapp.data.OrderItem
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OrderHistoryScreen(navController: NavController) {
-    // Когда перепишем сервер, просто заменим этот список на запрос в бд
+    //Здесь должен быть запрос истории заказов, но пока её нет.
     val fakeOrders = listOf(
         OrderItem(
             "№2048",
@@ -53,11 +53,11 @@ fun OrderHistoryScreen(navController: NavController) {
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xFFF3E5AB))
             )
         },
-        containerColor = Color(0xFFF3E5AB) // Твой фирменный ванильный цвет
+        containerColor = Color(0xFFF3E5AB)
     ) { innerPadding ->
 
         if (fakeOrders.isEmpty()) {
-            // Если заказов нет (на случай проверки)
+            // Если заказов нет
             Box(
                 modifier = Modifier.fillMaxSize().padding(innerPadding),
                 contentAlignment = Alignment.Center
@@ -71,7 +71,7 @@ fun OrderHistoryScreen(navController: NavController) {
                     .fillMaxSize()
                     .padding(innerPadding)
                     .padding(horizontal = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp), // Отступы между карточками
+                verticalArrangement = Arrangement.spacedBy(10.dp),
                 contentPadding = PaddingValues(vertical = 16.dp)
             ) {
                 items(fakeOrders) { order ->
@@ -84,7 +84,6 @@ fun OrderHistoryScreen(navController: NavController) {
 
 @Composable
 fun OrderCard(order: OrderItem) {
-    // Определяем цвет статуса
     val statusColor = when (order.status) {
         "Готовится" -> Color(0xFFE65100) // Оранжевый
         "Завершен" -> Color(0xFF2E7D32)  // Зеленый
@@ -94,7 +93,7 @@ fun OrderCard(order: OrderItem) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White) // Белая карточка на ванильном фоне выглядит круто
+        colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
         Column(
             modifier = Modifier

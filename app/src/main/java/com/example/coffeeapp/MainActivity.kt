@@ -306,11 +306,11 @@ fun CoffeeCard(
 fun CoffeeListScreen(navController: NavController) {
     val context = androidx.compose.ui.platform.LocalContext.current
 
-    // Получаем ID текущего юзера
+    // получаем ID текущего пользователя
     val currentUserId = remember { SessionManager.getUserId(context) }
 
     var coffeeList by remember { mutableStateOf<List<CoffeeModel>>(emptyList()) }
-    // Сюда сохранять список ID, которые пользователь лайкнул
+    // сохранить ID, которые пользователь лайкнул
     var favoriteIds by remember { mutableStateOf<List<Int>>(emptyList()) }
 
     var isLoading by remember { mutableStateOf(true) }
@@ -386,7 +386,7 @@ fun CoffeeListScreen(navController: NavController) {
                     contentPadding = PaddingValues(bottom = 16.dp)
                 ) {
                     items(coffeeList) { coffee ->
-                        // Проверяем, содержит ли список избранного ID этого кофе
+                        // Проверяем содержит ли список избранного ID этого кофе
                         val isFavorite = favoriteIds.contains(coffee.id)
 
                         CoffeeCard(

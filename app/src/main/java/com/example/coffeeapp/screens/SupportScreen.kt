@@ -97,7 +97,7 @@ fun SupportScreen(navController: NavController) {
                 }
             }
 
-            // --- БЛОК 2: FAQ ---
+
             item {
                 Spacer(modifier = Modifier.height(12.dp))
                 Text("Часто задаваемые вопросы", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color(0xFF3E2723))
@@ -158,7 +158,7 @@ fun FaqRow(faqItem: FaqItem) {
                 )
             }
 
-            // красивая плавная анимация появления текста
+            // анимка
             AnimatedVisibility(visible = isExpanded) {
                 Column {
                     Spacer(modifier = Modifier.height(8.dp))

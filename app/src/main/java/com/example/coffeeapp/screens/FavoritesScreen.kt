@@ -1,4 +1,4 @@
-package com.example.coffeeapp.screens // твой пакет
+package com.example.coffeeapp.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -34,7 +34,6 @@ fun FavoritesScreen(navController: NavController, client: HttpClient) {
     var favoriteIds by remember { mutableStateOf<List<Int>>(emptyList()) }
     var isLoading by remember { mutableStateOf(true) }
 
-    // LaunchedEffect(Unit) срабатывает ОДИН раз при открытии экрана (аналог захода в Postman)
     LaunchedEffect(Unit) {
         favoriteIds = FavoritesRepository.getFavorites(client, currentUserId)
         isLoading = false
@@ -73,7 +72,6 @@ fun FavoritesScreen(navController: NavController, client: HttpClient) {
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(favoriteIds) { id ->
-                    // Простая карточка для демонстрации (замени её потом на свою красивую CoffeeCard)
                     Card(
                         modifier = Modifier.fillMaxWidth().padding(4.dp),
                         colors = CardDefaults.cardColors(containerColor = Color.White)
@@ -82,12 +80,11 @@ fun FavoritesScreen(navController: NavController, client: HttpClient) {
                             Text("Кофе №$id", fontWeight = FontWeight.Bold, color = Color(0xFF3E2723))
                             Spacer(modifier = Modifier.height(8.dp))
 
-                            // Кнопка быстрого удаления прямо из экрана Избранного
+                            // Кнопка быстрого удаления
                             TextButton(onClick = {
                                 coroutineScope.launch {
                                     val success = FavoritesRepository.removeFavorite(client, currentUserId, id)
                                     if (success) {
-                                        // Фильтруем список, убирая этот ID из UI без перезагрузки экрана
                                         favoriteIds = favoriteIds.filter { it != id }
                                     }
                                 }

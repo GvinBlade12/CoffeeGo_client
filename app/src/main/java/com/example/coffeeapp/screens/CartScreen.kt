@@ -88,7 +88,7 @@ fun CartScreen(navController: NavController) {
                 // Кнопка заказа
                 Button(
                     onClick = {
-                        // Тут будет отправка заказа на Ктор-сервер!
+                        // Тут будет отправка заказа на Ктор-сервер
                         CartManager.clear()
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3E2723)),

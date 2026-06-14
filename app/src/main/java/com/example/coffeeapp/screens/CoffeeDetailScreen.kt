@@ -34,7 +34,6 @@ fun CoffeeDetailScreen(coffeeId: Int, navController: NavController) {
 
     LaunchedEffect(coffeeId) {
         try {
-            // Поменяли IP на твой реальный, чтобы работало и на физическом смартфоне
             val response: List<CoffeeModel> = client.get("http://192.168.0.105:8080/coffees").body()
             coffee = response.find { it.id == coffeeId }
             isLoading = false
@@ -97,7 +96,6 @@ fun CoffeeDetailScreen(coffeeId: Int, navController: NavController) {
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
-                // Заменили устаревший Divider на современный HorizontalDivider
                 HorizontalDivider(color = Color.LightGray, thickness = 1.dp)
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -140,8 +138,6 @@ fun CoffeeDetailScreen(coffeeId: Int, navController: NavController) {
                         // Проверяем, что данные о кофе загрузились
                         coffee?.let { currentCoffee ->
                             CartManager.addCoffee(currentCoffee, selectedSize)
-                            // Можно добавить Toast-уведомление, чтобы юзер понял, что всё сработало:
-                            // Toast.makeText(context, "Добавлено в корзину!", Toast.LENGTH_SHORT).show()
                         }
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3E2723)),

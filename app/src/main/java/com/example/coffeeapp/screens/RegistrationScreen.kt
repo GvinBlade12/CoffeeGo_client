@@ -26,7 +26,7 @@ import com.example.coffeeapp.client
 import com.example.coffeeapp.ui.theme.CoffeeAppTheme
 import io.ktor.client.call.body
 import io.ktor.client.request.*
-import io.ktor.client.statement.* // 📥 Импортируем HttpResponse
+import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
@@ -190,7 +190,7 @@ fun RegListScreen(navController: NavController) {
 
                         coroutineScope.launch {
                             try {
-                                // 1. Получаем HttpResponse вместо String, чтобы прочитать статус ответа
+                                //Получаем HttpResponse вместо String, чтобы прочитать статус ответа
                                 val response: HttpResponse = client.post("http://192.168.0.105:8080/users") {
                                     contentType(ContentType.Application.Json)
                                     setBody(CreateUserRequest(
@@ -200,21 +200,21 @@ fun RegListScreen(navController: NavController) {
                                     ))
                                 }
 
-                                // 2. Проверяем статус ответа от Ktor сервера
+                                //Проверяем статус ответа от Ktor сервера
                                 if (response.status == HttpStatusCode.Created) {
                                     val responseText = response.body<String>() // "Пользователь создан с ID: X"
 
                                     // Вытаскиваем цифры (ID) из ответа сервера
                                     val userId = responseText.filter { it.isDigit() }.toIntOrNull() ?: -1
 
-                                    // 3. Сохраняем все данные в сессию на телефоне
+                                    //Сохраняем все данные в сессию на телефоне
                                     SessionManager.saveLoginSession(context, emailText)
                                     SessionManager.saveNickname(context, nameText)
-                                    SessionManager.saveUserId(context, userId) // Наш новый метод!
+                                    SessionManager.saveUserId(context, userId)
 
                                     isLoading = false
 
-                                    // Улетаем в каталог
+                                    //в каталог
                                     navController.navigate("catalog") {
                                         popUpTo("registration") { inclusive = true }
                                     }

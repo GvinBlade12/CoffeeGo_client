@@ -24,7 +24,6 @@ import io.ktor.client.request.*
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 
-// Моделька пользователя, которую нам возвращает бэкенд при GET /users
 @Serializable
 data class UserResponse(
     val id: Int,
@@ -46,7 +45,7 @@ fun LoginScreen(navController: NavController) {
     val context = LocalContext.current
 
     Scaffold(
-        containerColor = Color(0xFFF3E5AB), // Твой фирменный кофейный цвет
+        containerColor = Color(0xFFF3E5AB),
         topBar = {
             Box(
                 modifier = Modifier
@@ -151,7 +150,7 @@ fun LoginScreen(navController: NavController) {
                                 isLoading = false
 
                                 if (matchedUser != null) {
-                                    // Сохраняем сессию только если пользователь РЕАЛЬНО найден и пароль совпал!
+                                    // Сохраняем сессию только если пользователь РЕАЛЬНО найден и пароль совпал
                                     SessionManager.saveLoginSession(context, emailText)
                                     SessionManager.saveUserId(context, matchedUser.id)
 
@@ -160,7 +159,7 @@ fun LoginScreen(navController: NavController) {
                                         popUpTo("login") { inclusive = true }
                                     }
                                 } else {
-                                    // Если не нашли — ругаемся
+                                    // Если не нашли даём ошибку
                                     errorMessage = "Неверный Email или Пароль, либо аккаунт не существует!"
                                 }
                             } catch (e: Exception) {
